@@ -35,6 +35,7 @@ import android.os.Binder;
 import android.os.Build;
 import android.os.Process;
 import android.os.SystemProperties;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
@@ -242,7 +243,7 @@ public class PixelPropsUtils {
         if (context == null) return false;
 
         final String packageName = context.getPackageName();
-        if (packageName == null || packageName.isEmpty()) {
+        if (TextUtils.isEmpty(packageName)) {
             return false;
         }
 
@@ -265,7 +266,7 @@ public class PixelPropsUtils {
         if (context == null) return;
 
         final String packageName = context.getPackageName();
-        if (packageName == null || packageName.isEmpty()) {
+        if (TextUtils.isEmpty(packageName)) {
             return;
         }
 
@@ -286,7 +287,7 @@ public class PixelPropsUtils {
                 break;
             }
         }
-        if (processName == null) return;
+        if (TextUtils.isEmpty(processName)) return;
 
         propsToChangeGeneric.forEach((k, v) -> setPropValue(k, v));
 
@@ -349,7 +350,7 @@ public class PixelPropsUtils {
             setPropValue("FINGERPRINT", Build.VERSION.INCREMENTAL);
             return;
         }
-        if (!sNetflixModel.isEmpty() && packageName.equals("com.netflix.mediaclient")) {
+        if (!TextUtils.isEmpty(sNetflixModel) && packageName.equals("com.netflix.mediaclient")) {
             dlog("Setting model to " + sNetflixModel + " for Netflix");
             setPropValue("MODEL", sNetflixModel);
             return;
