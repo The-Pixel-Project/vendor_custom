@@ -60,10 +60,6 @@ public class PixelPropsUtils {
     private static final Boolean sEnablePixelProps =
             SystemProperties.getBoolean("persist.sys.pihooks.enable", true);
 
-    private static final Boolean sDeviceIsPixel =
-            SystemProperties.get("ro.product.manufacturer", "").toLowerCase().contains("google");
-    private static final Boolean sForceSpoofGmsToPixel =
-            SystemProperties.getBoolean("persist.sys.pihooks.force.spoof.gms.pixel", false);
     private static final Boolean sBlockCertificateChain =
             SystemProperties.getBoolean("persist.sys.pihooks.block.certificate.chain", true);
 
@@ -324,12 +320,13 @@ public class PixelPropsUtils {
             } else if (sIsTablet) {
                 propsToChange = propsToChangePixelTablet;
             }
-            if (sIsGms && (!sDeviceIsPixel || sForceSpoofGmsToPixel)
-                && (processName.toLowerCase().contains("gapps")
+
+            if (sIsGms
+                || processName.toLowerCase().contains("gapps")
                 || processName.toLowerCase().contains("gservice")
                 || processName.toLowerCase().contains("learning")
                 || processName.toLowerCase().contains("persistent")
-                || processName.toLowerCase().contains("search"))) {
+                || processName.toLowerCase().contains("search")) {
                 propsToChange = propsToChangePixel5a;
             }
         }
