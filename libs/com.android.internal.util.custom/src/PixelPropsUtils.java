@@ -159,7 +159,6 @@ public class PixelPropsUtils {
                 "com.google.android.backupuses",
                 "com.google.android.euicc",
                 "com.google.android.gms.update",
-                "com.google.android.inputmethod.latin",
                 "com.google.android.youtube",
                 "com.google.ar.core",
                 "com.google.intelligence.sense",
