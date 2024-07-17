@@ -1,7 +1,0 @@
-filegroup {
-    name: "custom-utils-srcs",
-    srcs: [
-        "src/**/*.java",
-        "src/**/*.kt",
-    ],
-}
